@@ -1,0 +1,358 @@
+<?php
+session_start();
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Ambil data user dari session
+$username = $_SESSION['username'];
+$login_time = isset($_SESSION['login_time']) ? $_SESSION['login_time'] : 'Tidak tersedia';
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1Pedia - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="user-info">
+      <p><strong>User:</strong> <?php echo htmlspecialchars($username); ?></p>
+      <p><strong>Login:</strong> <?php echo htmlspecialchars($login_time); ?></p>
+      <a href="logout.php" class="btn-logout">Logout</a>
+    </div>
+    
+    <h1>F1Pedia</h1>
+    <nav>
+    <ul>
+    <li class="mega-dropdown">
+      <a href="jadwal.php">Jadwal</a>
+      <div class="jadwal-menu">
+        <div class="race-container">
+          <div class="race-grid">
+          <div class="race-section">
+          <h4>Previous</h4>
+          <div class="race-card-full">
+            <div class="race-flag">🇮🇹</div>
+            <div class="race-info">
+              <p class="round">Round 16</p>
+              <h5>Italian Grand Prix</h5>
+              <p class="date">05 – 07 SEP</p>
+              <p class="location">Monza</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-section current-race">
+          <h4>Current</h4>
+          <div class="race-card-full featured">
+            <div class="race-flag">🇦🇿</div>
+            <div class="race-info">
+              <p class="round">Round 17</p>
+              <h5>Azerbaijan Grand Prix</h5>
+              <p class="date">19 – 21 SEP</p>
+              <p class="location">Baku City Circuit</p>
+              <div class="race-status">RACE WEEKEND</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-section">
+          <h4>Upcoming</h4>
+          <div class="race-card-full">
+            <div class="race-flag">🇸🇬</div>
+            <div class="race-info">
+              <p class="round">Round 18</p>
+              <h5>Singapore Grand Prix</h5>
+              <p class="date">03 – 05 OCT</p>
+              <p class="location">Marina Bay</p>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </li>
+
+        <li><a href="hasil.php">Hasil</a></li>
+        <li class="mega-dropdown">
+  <a href="tim.php">Tim</a>
+  <div class="tim-menu">
+    <div class="team-container">
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/red-bull-racing-logo.png.transform/2col/image.png" alt="Red Bull Racing">
+          <div class="team-info">
+            <div class="team-name">Red Bull Racing</div>
+            <div class="team-drivers">Verstappen • Tsunoda</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/mercedes-logo.png.transform/2col/image.png" alt="Mercedes">
+          <div class="team-info">
+            <div class="team-name">Mercedes</div>
+            <div class="team-drivers">Russell • Antonelli</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/ferrari-logo.png.transform/2col/image.png" alt="Ferrari">
+          <div class="team-info">
+            <div class="team-name">Ferrari</div>
+            <div class="team-drivers">Leclerc • Hamilton</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/mclaren-logo.png.transform/2col/image.png" alt="McLaren">
+          <div class="team-info">
+            <div class="team-name">McLaren</div>
+            <div class="team-drivers">Norris • Piastri</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/aston-martin-logo.png.transform/2col/image.png" alt="Aston Martin">
+          <div class="team-info">
+            <div class="team-name">Aston Martin</div>
+            <div class="team-drivers">Alonso • Stroll</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/alpine-logo.png.transform/2col/image.png" alt="Alpine">
+          <div class="team-info">
+            <div class="team-name">Alpine</div>
+            <div class="team-drivers">Gasly • Colapinto</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/williams-logo.png.transform/2col/image.png" alt="Williams">
+          <div class="team-info">
+            <div class="team-name">Williams</div>
+            <div class="team-drivers">Albon • Sainz</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/racing-bulls-logo.png.transform/2col/image.png" alt="AlphaTauri">
+          <div class="team-info">
+            <div class="team-name">Racing Bulls</div>
+            <div class="team-drivers">Hadjar • Lawson</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/kick-sauber-logo.png.transform/2col/image.png" alt="Alfa Romeo">
+          <div class="team-info">
+            <div class="team-name">Sauber</div>
+            <div class="team-drivers">Hulkenberg • Bortoleto</div>
+          </div>
+        </div>
+        
+        <div class="team-card">
+          <img src="https://www.formula1.com/content/dam/fom-website/teams/2025/haas-logo.png.transform/2col/image.png" alt="Haas">
+          <div class="team-info">
+            <div class="team-name">Haas</div>
+            <div class="team-drivers">Ocon • Bearman</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+        
+        <li class="mega-dropdown">
+          <a href="pembalap.php">Pembalap</a>
+          <div class="pembalap-menu">
+            <div class="driver-container">
+              <div class="driver-list">
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/A/ALEALB01_Alexander_Albon/alealb01.png.transform/1col/image.png" alt="Alexander Albon">
+                  <div class="driver-info">
+                    <div class="driver-name">Alexander ALBON</div>
+                    <div class="team-name">Williams</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.png.transform/1col/image.png" alt="Fernando Alonso">
+                  <div class="driver-info">
+                    <div class="driver-name">Fernando ALONSO</div>
+                    <div class="team-name">Aston Martin</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/1col/image.png" alt="Gabriel Bortoleto">
+                  <div class="driver-info">
+                    <div class="driver-name">Gabriel Bortoleto</div>
+                    <div class="team-name">Sauber</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/L/LIALAW01_Liam_Lawson/lialaw01.png.transform/1col/image.png" alt="Liam Lawson">
+                  <div class="driver-info">
+                    <div class="driver-name">Liam Lawson</div>
+                    <div class="team-name">Racing Bulls</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/P/PIEGAS01_Pierre_Gasly/piegas01.png.transform/1col/image.png" alt="Pierre Gasly">
+                  <div class="driver-info">
+                    <div class="driver-name">Pierre GASLY</div>
+                    <div class="team-name">Alpine</div>
+                  </div>
+                </div>
+
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/1col/image.png" alt="Lewis Hamilton">
+                  <div class="driver-info">
+                    <div class="driver-name">Lewis HAMILTON</div>
+                    <div class="team-name">Ferrari</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/N/NICHUL01_Nico_Hulkenberg/nichul01.png.transform/1col/image.png" alt="Nico Hulkenberg">
+                  <div class="driver-info">
+                    <div class="driver-name">Nico HULKENBERG</div>
+                    <div class="team-name">Sauber</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/1col/image.png" alt="Charles Leclerc">
+                  <div class="driver-info">
+                    <div class="driver-name">Charles LECLERC</div>
+                    <div class="team-name">Ferrari</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/O/OLIBEA01_Oliver_Bearman/olibea01.png.transform/1col/image.png" alt="Ollie Bearman">
+                  <div class="driver-info">
+                    <div class="driver-name">Ollie Bearman</div>
+                    <div class="team-name">Haas</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/1col/image.png" alt="Lando Norris">
+                  <div class="driver-info">
+                    <div class="driver-name">Lando NORRIS</div>
+                    <div class="team-name">McLaren</div>
+                  </div>
+                </div>
+
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/E/ESTOCO01_Esteban_Ocon/estoco01.png.transform/1col/image.png" alt="Esteban Ocon">
+                  <div class="driver-info">
+                    <div class="driver-name">Esteban OCON</div>
+                    <div class="team-name">Alpine</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png" alt="Yuki Tsunoda">
+                  <div class="driver-info">
+                    <div class="driver-name">Yuki Tsunoda</div>
+                    <div class="team-name">Red Bull Racing</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png.transform/1col/image.png" alt="Oscar Piastri">
+                  <div class="driver-info">
+                    <div class="driver-name">Oscar PIASTRI</div>
+                    <div class="team-name">McLaren</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png.transform/1col/image.png" alt="George Russell">
+                  <div class="driver-info">
+                    <div class="driver-name">George RUSSELL</div>
+                    <div class="team-name">Mercedes</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.png.transform/1col/image.png" alt="Carlos Sainz">
+                  <div class="driver-info">
+                    <div class="driver-name">Carlos SAINZ</div>
+                    <div class="team-name">Williams</div>
+                  </div>
+                </div>
+
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/L/LANSTR01_Lance_Stroll/lanstr01.png.transform/1col/image.png" alt="Lance Stroll">
+                  <div class="driver-info">
+                    <div class="driver-name">Lance STROLL</div>
+                    <div class="team-name">Aston Martin</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/I/ISAHAD01_Isack_Hadjar/isahad01.png.transform/1col/image.png" alt="Isack Hadjar">
+                  <div class="driver-info">
+                    <div class="driver-name">Isack HADJAR</div>
+                    <div class="team-name">Racing Bulls</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png" alt="Max Verstappen">
+                  <div class="driver-info">
+                    <div class="driver-name">Max VERSTAPPEN</div>
+                    <div class="team-name">Red Bull Racing</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/A/ANDANT01_Andrea_Kimi_Antonelli/andant01.png.transform/1col/image.png" alt="Kimi Antonelli">
+                  <div class="driver-info">
+                    <div class="driver-name">Kimi ANTONELLI</div>
+                    <div class="team-name">Mercedes</div>
+                  </div>
+                </div>
+                
+                <div class="driver-card">
+                  <img src="https://www.formula1.com/content/dam/fom-website/drivers/F/FRACOL01_Franco_Colapinto/fracol01.png.transform/1col/image.png" alt="Franco Colapinto">
+                  <div class="driver-info">
+                    <div class="driver-name">Franco COLAPINTO</div>
+                    <div class="team-name">Alpine</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <li><a href="klasemen.php">Klasemen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Selamat Datang di F1Pedia</h2>
+      <a href="aboutus.php" class="btn">Tentang Kami</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Referensi: <a href="https://www.formula1.com/">Formula1.com</a></p>
+  </footer>
+</body>
+</html>

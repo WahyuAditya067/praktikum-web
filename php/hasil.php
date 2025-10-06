@@ -1,0 +1,41 @@
+<?php
+session_start();
+
+// Redirect ke login jika belum login
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Balapan - F1Pedia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>F1Pedia</h1>
+    <nav>
+      <ul>
+        <li><a href="jadwal.html">Jadwal</a></li>
+        <li><a href="hasil.html">Hasil</a></li>
+        <li><a href="tim.html">Tim</a></li>
+        <li><a href="pembalap.html">Pembalap</a></li>
+        <li><a href="klasemen.html">Klasemen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Nanti Diisi</h2>
+  </main>
+
+  <footer>
+    <p>Referensi: <a href="https://www.formula1.com/">Formula1.com</a></p>
+  </footer>
+</body>
+</html>
