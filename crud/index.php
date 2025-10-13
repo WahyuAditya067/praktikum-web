@@ -8,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 include 'koneksi.php';
 
-// Ambil data pembalap dari database
 $sql = "SELECT * FROM drivers";
 $result = $conn->query($sql);
 $drivers = [];
@@ -228,4 +227,5 @@ $login_time = isset($_SESSION['login_time']) ? $_SESSION['login_time'] : 'Tidak 
     <p>Referensi: <a href="https://www.formula1.com/">Formula1.com</a></p>
   </footer>
 </body>
+
 </html>
