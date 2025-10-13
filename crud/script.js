@@ -1,8 +1,3 @@
-// ==========================================
-// FUNCTION - Fungsi untuk mengelola dropdown menu
-// ==========================================
-
-// Function untuk toggle dropdown menu
 function toggleDropdown(dropdownElement) {
   const menu = dropdownElement.querySelector('.jadwal-menu, .tim-menu, .pembalap-menu');
   if (menu) {
@@ -10,7 +5,6 @@ function toggleDropdown(dropdownElement) {
   }
 }
 
-// Function untuk menutup semua dropdown
 function closeAllDropdowns() {
   const allMenus = document.querySelectorAll('.jadwal-menu, .tim-menu, .pembalap-menu');
   allMenus.forEach(menu => {
@@ -18,12 +12,10 @@ function closeAllDropdowns() {
   });
 }
 
-// Arrow Function untuk animasi smooth scroll
 const smoothScrollTo = (element) => {
   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
-// Function untuk menambahkan animasi pada card
 function addCardAnimation(card) {
   card.style.transition = 'all 0.3s ease';
   card.addEventListener('mouseenter', function() {
@@ -35,7 +27,6 @@ function addCardAnimation(card) {
   });
 }
 
-// Arrow Function untuk highlight current page
 const highlightCurrentPage = () => {
   const currentPage = window.location.pathname.split('/').pop();
   const navLinks = document.querySelectorAll('nav ul li a');
@@ -48,15 +39,9 @@ const highlightCurrentPage = () => {
   });
 };
 
-// ==========================================
-// EVENT HANDLING - Menangani interaksi user
-// ==========================================
-
-// Function untuk setup semua event handlers
 function setupEventHandlers() {
   console.log('Setting up event handlers...');
   
-  // Event handling untuk race cards
   const raceCards = document.querySelectorAll('.race-card-full');
   console.log('Jumlah race cards ditemukan: ' + raceCards.length);
   
@@ -70,13 +55,6 @@ function setupEventHandlers() {
     });
   });
 
-  // Event handling untuk driver cards - TIDAK PERLU LAGI karena sudah pakai <a> tag
-  // Driver cards sekarang menggunakan link langsung ke pembalap.php?id=xxx
-
-  // Event handling untuk team cards - TIDAK PERLU LAGI karena sudah pakai <a> tag
-  // Team cards sekarang menggunakan link langsung ke tim.php?id=xxx
-
-  // Event handling untuk button hero
   const heroButton = document.querySelector('.hero .btn');
   if (heroButton) {
     console.log('Hero button ditemukan');
@@ -92,12 +70,10 @@ function setupEventHandlers() {
     });
   }
 
-  // Tambahkan animasi pada race cards
   const raceCardsForAnimation = document.querySelectorAll('.race-card-full');
   raceCardsForAnimation.forEach(card => addCardAnimation(card));
 }
 
-// Arrow Function untuk mengubah warna header saat scroll
 const changeHeaderOnScroll = () => {
   const header = document.querySelector('header');
   
@@ -119,28 +95,22 @@ const changeHeaderOnScroll = () => {
   }
 };
 
-// Event load pada halaman
 window.addEventListener('load', function() {
   console.log('Halaman F1Pedia telah selesai dimuat');
   
-  // Highlight current page
   highlightCurrentPage();
   
-  // Setup semua event handlers
   setupEventHandlers();
   
-  // Setup header scroll effect
   changeHeaderOnScroll();
 });
 
-// Event handling untuk mega dropdown menus
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM Content Loaded');
   
   const megaDropdowns = document.querySelectorAll('.mega-dropdown');
   
   megaDropdowns.forEach(dropdown => {
-    // Event mouseenter untuk menampilkan menu
     dropdown.addEventListener('mouseenter', function() {
       const menu = this.querySelector('.jadwal-menu, .tim-menu, .pembalap-menu');
       if (menu) {
@@ -148,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Event mouseleave untuk menyembunyikan menu
     dropdown.addEventListener('mouseleave', function() {
       const menu = this.querySelector('.jadwal-menu, .tim-menu, .pembalap-menu');
       if (menu) {
@@ -158,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Event keyboard untuk navigasi dengan arrow keys
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeAllDropdowns();
@@ -174,11 +142,6 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-// ==========================================
-// DOM MANIPULATION - Memanipulasi elemen DOM
-// ==========================================
-
-// Function untuk menambahkan loading indicator
 function showLoadingIndicator() {
   const loadingDiv = document.createElement('div');
   loadingDiv.id = 'loading-indicator';
@@ -196,13 +159,11 @@ function showLoadingIndicator() {
   
   document.body.appendChild(loadingDiv);
   
-  // Hapus loading indicator setelah 2 detik
   setTimeout(() => {
     loadingDiv.remove();
   }, 2000);
 }
 
-// Function untuk menambahkan badge "NEW" pada race
 function addNewBadge(raceCard) {
   const badge = document.createElement('span');
   badge.textContent = 'NEW';
@@ -222,7 +183,6 @@ function addNewBadge(raceCard) {
   console.log('Badge NEW ditambahkan');
 }
 
-// Function untuk menambahkan counter view pada footer
 function addViewCounter() {
   const footer = document.querySelector('footer');
   if (footer) {
@@ -232,7 +192,6 @@ function addViewCounter() {
     counterDiv.style.fontSize = '0.9rem';
     counterDiv.style.color = '#8b949e';
     
-    // Simulasi counter (dalam aplikasi nyata, ini akan menggunakan database)
     const viewCount = Math.floor(Math.random() * 10000) + 1000;
     counterDiv.textContent = 'Total Views: ' + viewCount.toLocaleString();
     
@@ -241,7 +200,6 @@ function addViewCounter() {
   }
 }
 
-// Arrow Function untuk toggle dark/light mode
 const toggleTheme = () => {
   const body = document.body;
   const currentBg = body.style.background;
@@ -255,7 +213,6 @@ const toggleTheme = () => {
   }
 };
 
-// Function untuk menambahkan timestamp
 function addTimestamp() {
   const main = document.querySelector('main');
   if (main) {
@@ -272,12 +229,10 @@ function addTimestamp() {
   }
 }
 
-// Jalankan DOM manipulation functions
 document.addEventListener('DOMContentLoaded', function() {
   addViewCounter();
   addTimestamp();
   
-  // Tambahkan badge NEW pada featured race
   setTimeout(() => {
     const featuredRace = document.querySelector('.race-card-full.featured');
     if (featuredRace) {
@@ -286,6 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 500);
 });
 
-// Console log untuk debugging
 console.log('Script F1Pedia berhasil dimuat!');
+
 console.log('Menggunakan Function, Arrow Function, Event Handling, dan DOM Manipulation');
